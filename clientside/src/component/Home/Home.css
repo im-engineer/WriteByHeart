@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home--page{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-image: url('../../assets/jpeg/book-4.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+}
+
+.home--page div{
+    margin:40px;
+    padding: 70px;
+    color:white;
+    font-size: 25px;
+    background-color: rgba(167, 163, 163, 1);
+    box-shadow: 4px 4px 4px rgb(128, 0, 128);
+    width:20%;
+}
