@@ -29,7 +29,7 @@ function Navbar() {
         className="navbar navbar-expand-lg navbar-dark"
         style={{ backgroundColor: "rgba(000,000,000,0.2)" }}
       >
-        <div className="container-fluid">
+        <nav className="container-fluid">
           <img src={logo} alt="" />
           <button
             className="navbar-toggler"
@@ -114,7 +114,7 @@ function Navbar() {
               onRequestClose={toggleModal}
               className="blur-background"
             >
-              <Signup/>
+              <Signup />
             </Modal>
           </div>
           <div>
@@ -135,13 +135,12 @@ function Navbar() {
               onRequestClose={toggleModal}
               className="blur-background"
             >
-             <Signin/>
+              <Signin />
             </Modal>
           </div>
-        </div>
+        </nav>
       </nav>
     </div>
   );
 }
-
 export default Navbar;
