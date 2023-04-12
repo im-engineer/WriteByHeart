@@ -1,0 +1,53 @@
+.signin--page {
+  height: 70vh;
+  margin: 7rem;
+  border-radius: 2rem;
+}
+
+.signin--page h1 {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: "BestermindRegular";
+}
+
+.signin--page h2 {
+  margin-top: 2rem;
+  font-family: "BestermindRegular";
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.signin--page img {
+  width: 60%;
+  height: 45vh;
+  float: right;
+  padding-right: 5rem;
+}
+
+.signin-form {
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background: none;
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+.no-outline {
+  padding: 7px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* .blur-background {
+  backdrop-filter: blur();
+} */
