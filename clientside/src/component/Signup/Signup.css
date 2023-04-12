@@ -1,0 +1,54 @@
+
+.signup--page{
+    height: 90vh;
+    margin: 2rem;
+    border-radius: 2rem;
+}
+
+.blur-background {
+    backdrop-filter: blur(1px);
+  }
+
+.signup--page h1{
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'BestermindRegular';
+
+}
+
+.signup--page h2{
+    margin-top: 2rem;
+    font-family: 'BestermindRegular';
+    text-align: center;
+
+}
+
+.signup--page img{
+  width: 70%;
+  height: 70vh;
+  float: right;
+}
+
+.signup-form {
+    padding-right: 5rem;
+    padding-left: 5rem;
+}
+
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background: none;
+}
+  
+  .no-outline:focus {
+    outline: none;
+  }
+
+  .no-outline{
+    padding: 7px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+  }

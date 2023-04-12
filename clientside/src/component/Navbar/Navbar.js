@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/logo/-logo.png"
 import Logo from "../../assets/jpeg/logo.png"
+import Signup from "../Signup/Signup";
 
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,59 +116,11 @@ function Navbar() {
               isOpen={isModalOpen}
               onRequestClose={closeModal}
               className="blur-background"
+              
             >
-              <div
-                className="signup--page"
-                style={{ backgroundColor: "rgba(000,000,000,0.2)" }}
-              >
-                <button
-                  onClick={closeModal}
-                  style={{ margin: "1rem", float: "right", width:"20px", background:"none" }}
-                >
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <div className="container">
-                  <div className="row">
-                    <h1>Welcome to khaab...</h1>
-                    <div className="col-md-6">
-                      <h2>Join khaab to make your khaab true</h2>
-                      <form className="signup-form">
-                        <input
-                          className="no-outline"
-                          type="text"
-                          placeholder="Fullname"
-                        />
-                        <input
-                          className="no-outline"
-                          type="text"
-                          placeholder="Username"
-                        />
-                        <input
-                          className="no-outline"
-                          type="text"
-                          placeholder="Email"
-                        />
-                        <input
-                          className="no-outline"
-                          type="password"
-                          placeholder="Password"
-                        />
-                        <input
-                          className="no-outline"
-                          type="text"
-                          placeholder="Contact no."
-                        />
-                        <button type="submit" className="btn btn-primary">
-                          Sign up
-                        </button>
-                      </form>
-                    </div>
-                    <div className="col-md-6">
-                        <img src={Logo} alt=""/>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+              <Signup/>
+            
             </Modal>
           </div>
         </div>
