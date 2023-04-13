@@ -6,6 +6,7 @@ const app = express();
 import {mongoconnection} from './db';
 mongoconnection();
 import writerRoute from "./routes/writerRoute/writerRoute"
+import adminRoute from "./routes/adminRoute/adminRoute"
 // app.use(cors({origin:"*"}));
 
 app.use(bodyParser.urlencoded(
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded(
     }));
 app.use(bodyParser.json());
 
-
+app.use("/admin",adminRoute)
 app.use("/writer",writerRoute)
 
 
