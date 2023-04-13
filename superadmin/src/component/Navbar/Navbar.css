@@ -1,0 +1,20 @@
+.navbar {
+    background-color:rgba(000,000,000,0.3);
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+
+  .logo img {
+    height: 50px;
+  }
+  
+  .links a {
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+  }

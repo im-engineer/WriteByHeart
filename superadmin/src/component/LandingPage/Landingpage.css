@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.landing--page{
+    height:100vh;   
+    width: 100%;
+    background-image: url('../../assets/jpeg/book.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;    
+    text-align: center;
+    background-attachment:fixed;
+}
+
+

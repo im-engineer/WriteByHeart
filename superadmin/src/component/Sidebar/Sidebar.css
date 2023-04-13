@@ -1,0 +1,12 @@
+.sidebar {
+    background-color:rgba(000,000,000,0.3);
+    color: #fff;
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+  }
+  
