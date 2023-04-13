@@ -5,7 +5,7 @@ const app = express();
 // import cors from 'cors'
 import {mongoconnection} from './db';
 mongoconnection();
-// import contactRoute from "./router/contactRoute"
+import writerRoute from "./routes/writerRoute/writerRoute"
 // app.use(cors({origin:"*"}));
 
 app.use(bodyParser.urlencoded(
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded(
 app.use(bodyParser.json());
 
 
-// app.use("/contact",contactRoute)
+app.use("/add",writerRoute)
 
 
 export default app;
