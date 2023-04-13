@@ -41,7 +41,7 @@ function Signup() {
                   type="date"
                   placeholder="Date of birth"
                 />
-                <button type="submit" className="btn btn-dark-outline">
+                <button type="submit" className="btn btn-outline-dark">
                   Join
                 </button>
               </form>

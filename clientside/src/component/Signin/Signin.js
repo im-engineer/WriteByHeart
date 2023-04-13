@@ -21,7 +21,7 @@ function Signin() {
                   type="password"
                   placeholder="Password"
                 />
-                <button type="submit" className="btn btn-dark-outline">
+                <button type="submit" className="btn btn-outline-dark">
                   SignIn
                 </button>
               </form>
