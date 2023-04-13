@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded(
 app.use(bodyParser.json());
 
 
-app.use("/add",writerRoute)
+app.use("/writer",writerRoute)
 
 
 export default app;
