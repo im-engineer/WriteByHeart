@@ -128,7 +128,7 @@ function Navbar() {
               onClick={() => toggleModal("signIn")}
             >
               <i className="fa fa-sign-in-alt" />
-              Sign In
+                  Access
             </Link>
             <Modal
               isOpen={isSignInModalOpen}
