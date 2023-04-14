@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../../assets/jpeg/logo.png";
 import "./Signup.css";
+import { writerRegistration } from "../../service/authService";
 
 function Signup() {
   const [formValues, setFormValues] = useState({
@@ -9,7 +10,7 @@ function Signup() {
     email: "",
     password: "",
     contactNo: "",
-    dateOfBirth: "",
+    dob: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -39,8 +40,8 @@ function Signup() {
     } else if (!/^\d{10}$/.test(formValues.contactNo)) {
       newErrors.contactNo = "Contact number is invalid";
     }
-    if (!formValues.dateOfBirth) {
-      newErrors.dateOfBirth = "Date of birth is required";
+    if (!formValues.dob) {
+      newErrors.dob = "Date of birth is required";
     }
 
     // Update errors state
