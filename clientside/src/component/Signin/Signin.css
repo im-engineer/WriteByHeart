@@ -48,6 +48,39 @@ input {
   width: 100%;
 }
 
-/* .blur-background {
-  backdrop-filter: blur();
-} */
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .signin--page {
+    margin: 3rem;
+    height: auto;
+  }
+
+  .signin--page img {
+    width: 100%;
+    height: auto;
+    float: none;
+    padding-right: 0;
+  }
+
+  .signin-form {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .signin--page {
+    margin: 2rem;
+    margin-top: 3rem;
+  }
+
+  .signin--page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .no-outline {
+    font-size: 14px;
+  }
+}
+  
