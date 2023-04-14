@@ -1,5 +1,37 @@
-.publish--page{
-    height: 100vh;
-    width: 100%;
-    background-color: black;
+.publish--page {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
+
+.publish--page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 000, 0.4);
+  z-index: -1;
+  display: flex;
+    border-radius: 2rem;
+}
+
+  
+  .publish--page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/jpeg/publish.jpg");
+    opacity: 0.5;
+    z-index: -2;
+    /* Optionally, you can use the following properties to adjust the background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  

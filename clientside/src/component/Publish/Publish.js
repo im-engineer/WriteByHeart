@@ -6,6 +6,7 @@ function Publish() {
   return (
     <div className='publish--page'>
         <Navbar/>
+        
     </div>
   )
 }
