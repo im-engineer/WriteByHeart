@@ -24,8 +24,8 @@ function Navbar() {
   const isSignInModalOpen = modalOpen === "signIn";
 
   const userdata = useSelector((state) => state.auth);
-  console.log(userdata.data.result.image, "user");
-  let path = `http://localhost:5001/upload/${userdata.data.result.image}`;
+  // console.log(userdata.data.result.image, "user");
+  // let path = `http://localhost:5001/upload/${userdata.data.result.image}`;
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -77,7 +77,7 @@ function Navbar() {
                   Link
                 </Link>
               </li>
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
                   href="/"
@@ -99,29 +99,18 @@ function Navbar() {
                       Another action
                     </Link>
                   </li>
-                  {/* <li><hr className="dropdown-divider"></li> */}
                   <li>
                     <Link className="dropdown-item" to="/">
                       Something else here
                     </Link>
                   </li>
                 </ul>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link disabled"
-                  to="/"
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Disabled
-                </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           {userdata.isLoggedIn ? (
             <div className="navlink">
-              <img src={path} alt="profile" /> &nbsp;&nbsp;
+              {/* <img src={path} alt="profile" /> &nbsp;&nbsp; */}
 
               <button
                 className="btn btn-outline-secondary"
