@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Logo from "../../assets/jpeg/logo.png";
 import "./Signup.css";
 import { writerRegistration } from "../../service/authService";
+import {useNavigate} from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
+  const navigate = useNavigate();
+
   const [formValues, setFormValues] = useState({
     fullName: "",
     username: "",
@@ -60,6 +65,68 @@ function Signup() {
     });
   };
 
+  const [input, setInput] = useState({
+    fullname : "",
+    username: "",
+    phonenumber: "",
+    email: "",
+    password: "",
+    dob:"",
+    image: null,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput((previousValue) => ({
+      ...previousValue,
+      [name]: value,
+    }));
+  };
+  
+  const onFileChange = (e) => {
+    setInput((previous) => ({
+      ...previous,
+      image: e.target.files[0],
+    }));
+  };
+
+
+  const joinWriter = async (e) => {
+    e.preventDefault();
+    const fromdata = new FormData();
+    fromdata.append("image", input.image);
+    fromdata.append("fullname", input.fullname);
+    fromdata.append("username", input.username);
+    fromdata.append("address", input.dob);
+    fromdata.append("mobile", input.phonenumber);
+    fromdata.append("email", input.email);
+    fromdata.append("password", input.password);
+    try {
+      const response = await writerRegistration(fromdata);
+      if (response.data.status === true) {
+        // setLoading(true);
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setTimeout(() => {
+
+          navigate("/verifyotp");
+
+        }, 1000);
+      } else {
+        toast.warning(response.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    } catch (err) {
+    console.log("🚀 ~ file: SignUp.js ~ line 158 ~ signupUser ~ err", err);
+    }
+  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
+  
   return (
     <div>
       <div
@@ -71,9 +138,19 @@ function Signup() {
             <h1>Welcome to khaab...</h1>
             <div className="col-md-6">
               <h2>Join khaab to make your khaab true</h2>
-              <form className="signup-form" onSubmit={handleSubmit}>
+              <form className="signup-form" onSubmit={(e) => handleSubmit(e)}>
+                {/* <label>Upload Image</label> */}
                 <input
-                  className={`no-outline${errors.fullName ? " is-invalid" : ""}`}
+                  type="file"
+                  className="product__input"
+                  name="profile"
+                  onChange={onFileChange}
+                />
+
+                <input
+                  className={`no-outline${
+                    errors.fullName ? " is-invalid" : ""
+                  }`}
                   type="text"
                   placeholder="Fullname"
                   name="fullName"
@@ -84,7 +161,9 @@ function Signup() {
                   <div className="invalid-feedback">{errors.fullName}</div>
                 )}
                 <input
-                  className={`no-outline${errors.username ? " is-invalid" : ""}`}
+                  className={`no-outline${
+                    errors.username ? " is-invalid" : ""
+                  }`}
                   type="text"
                   placeholder="Username"
                   name="username"
@@ -106,7 +185,9 @@ function Signup() {
                   <div className="invalid-feedback">{errors.email}</div>
                 )}
                 <input
-                  className={`no-outline${errors.password ? " is-invalid" : ""}`}
+                  className={`no-outline${
+                    errors.password ? " is-invalid" : ""
+                  }`}
                   type="text"
                   placeholder="Password"
                   name="password"
@@ -117,11 +198,13 @@ function Signup() {
                   <div className="invalid-feedback">{errors.password}</div>
                 )}
                 <input
-                  className={`no-outline${errors.contactNo ? " is-invalid" : ""}`}
+                  className={`no-outline${
+                    errors.contactNo ? " is-invalid" : ""
+                  }`}
                   type="text"
                   placeholder="Contact No."
-                  name="contactNo"
-                  value={formValues.contactNo}
+                  name="phonenumber"
+                  value={formValues.phonenumber}
                   onChange={handleInputChange}
                 />
                 {errors.contactNo && (
@@ -138,7 +221,7 @@ function Signup() {
                 {errors.dob && (
                   <div className="invalid-feedback">{errors.dob}</div>
                 )}
-                <button type="submit" className="btn btn-outline-dark">
+                <button type="submit" className="btn btn-outline-dark" onClick={joinWriter}>
                   Join
                 </button>
               </form>

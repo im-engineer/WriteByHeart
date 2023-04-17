@@ -18,7 +18,7 @@ export const writerRegistration = async (fromdata) => {
 
 
 //-------------------------->>>>>> Writer Login <<<<<<--------------------------
-export const writerLogin = async (email,password) => {
+export const writerAccess = async (email,password) => {
     console.log(email,password)
     try{
         const response =  await axios.post (API_URL + "writer/login",{
