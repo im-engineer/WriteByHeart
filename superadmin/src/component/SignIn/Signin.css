@@ -1,0 +1,89 @@
+.signin--page {
+    height: 70vh;
+    margin: 7rem;
+    border-radius: 2rem;
+    overflow-y: auto;
+  
+  }
+  
+  .signin--page h1 {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: "BestermindRegular";
+  }
+  
+  .signin--page h2 {
+    margin-top: 2rem;
+    font-family: "BestermindRegular";
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .signin--page img {
+    width: 60%;
+    height: 40vh;
+    float: right;
+    padding-right: 5rem;
+  }
+  
+  .signin-form {
+    padding-right: 5rem;
+    padding-left: 5rem;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background: none;
+  }
+  
+  .no-outline:focus {
+    outline: none;
+  }
+  
+  .no-outline {
+    padding: 7px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  /* Media queries */
+  @media screen and (max-width: 768px) {
+    .signin--page {
+      margin: 3rem;
+      height: auto;
+    }
+  
+    .signin--page img {
+      width: 100%;
+      height: auto;
+      float: none;
+      padding-right: 0;
+    }
+  
+    .signin-form {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .signin--page {
+      margin: 2rem;
+      margin-top: 3rem;
+    }
+  
+    .signin--page h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  
+    .no-outline {
+      font-size: 14px;
+    }
+  }
+    
