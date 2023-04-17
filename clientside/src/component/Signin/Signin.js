@@ -41,7 +41,7 @@ console.log(input)
       if (apiResponse.data.status === true) {
         // setLoading(true);
         dispatch(writerLogin(apiResponse.data));
-        navigate("/landingPage")
+        navigate("/")
         // setTimeout(() => {
         //   navigate("/");
         // }, 1000);
