@@ -74,8 +74,7 @@ console.log(input)
                   type="email"
                   placeholder="Email"
                   name="email"
-                  value={email}
-                  // onChange={(e) => setEmail(e.target.value)}
+                  // value={email}
                   required
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   onChange={(e) => onHandleChange(e)}
@@ -85,7 +84,7 @@ console.log(input)
                   type="password"
                   placeholder="Password"
                   name="password"
-                  value={password}
+                  // value={password}
                   onChange={(e) => onHandleChange(e)}
                   minLength="8"
                   required
