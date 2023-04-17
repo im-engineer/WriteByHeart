@@ -11,6 +11,9 @@ import { writerlogout } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const [modalOpen, setModalOpen] = useState(null);
 
   const toggleModal = (modalName) => {
@@ -21,7 +24,8 @@ function Navbar() {
   const isSignInModalOpen = modalOpen === "signIn";
 
   const userdata = useSelector((state) => state.auth);
-  console.log(userdata, "user");
+  console.log(userdata.data.result.image, "user");
+  let path = `http://localhost:5001/upload/${userdata.data.result.image}`;
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -117,7 +121,12 @@ function Navbar() {
           </div>
           {userdata.isLoggedIn ? (
             <div className="navlink">
-              <button className="btn btn-outline-secondary" onClick={handellogout}>
+              <img src={path} alt="profile" /> &nbsp;&nbsp;
+
+              <button
+                className="btn btn-outline-secondary"
+                onClick={handellogout}
+              >
                 <i class="fa-solid fa-power-off"></i>logout
               </button>
               &nbsp;&nbsp;
