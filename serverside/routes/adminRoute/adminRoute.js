@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { upload } from "../../middleware/uploadImage/uploadImage"
+import { upload } from "../../middleware/multer/uploadImage"
 import { adminCreate, adminLogin } from "../../controller/admin/admin";
 
 router.post("/created", upload.single('image'),adminCreate)

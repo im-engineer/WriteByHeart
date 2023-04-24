@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 var config = require('./config/config');
 
 var configdata = config.get(process.env.Node_env).db;
+console.log("🚀 ~ file: db.js:6 ~ configdata:", configdata)
 import 'dotenv/config'
 var port = process.env.PORT || configdata.port
 var mongoUrl = `mongodb://${configdata.host}:${port}/${configdata.databaseName}`;

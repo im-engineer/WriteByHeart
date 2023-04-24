@@ -15,8 +15,21 @@ function decryptData(data) {
   return originalText
 }
 
-export const writerRegistration = async (req, res) => {
+export const writerJoined = async (req, res) => {
   try {
+    // Check if email already exists in the database
+    const email = req.body.email;
+    const existingWriter = await writerModel.find({});
+   const foundWriter = existingWriter.find(writer => writer.email );
+    const decryptemail = decryptData(foundWriter.email)
+    console.log("🚀 ~ file: writer.js:25 ~ writerJoined ~ decryptemail:", decryptemail)
+    if (email == decryptemail) {
+      return res.status(400).send({
+        status: false,
+        message: "Email already exists in the database",
+      });
+    }
+
     // generate a new key for each piece of data
     const key = generateKey();
     const writerDetails = new writerModel({
@@ -24,9 +37,10 @@ export const writerRegistration = async (req, res) => {
       username : encryptData(req.body.username, key),
       email : encryptData(req.body.email, key),
       password : encryptData(req.body.password, key),
-      phonenumber : encryptData(req.body.phonenumber, key),
+      phoneNumber : encryptData(req.body.phoneNumber, key),
       dob : encryptData(req.body.dob, key),
       gender : encryptData(req.body.gender, key),
+      status : req.body.status,
       image: req.file.filename,
     });
     const writerData = await writerDetails.save();
@@ -34,7 +48,7 @@ export const writerRegistration = async (req, res) => {
     if(writerData){
       res.send({
         status: true,
-        message: "Registratione done successfully",
+        message: "Registration done successfully",
         result: writerData,
       });
     }
@@ -43,10 +57,11 @@ export const writerRegistration = async (req, res) => {
     res.status(500).send({
       status: false,
       message: "Registration failed",
-      error: error.message,
+      // error: error.message,
     });
   }
 };
+
 
 
 export const writerLogin = async (req, res) => {

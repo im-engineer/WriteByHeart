@@ -9,20 +9,16 @@ const writerSchema = mongoose.Schema({
     default: null,
     require: true,
     unique: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw Error("not valid email");
-      }
-    },
+  
   },
   password: { type: String, default: null, require: true },
   phoneNumber: {
-    type: Number,
+    type: String,
     default: null,
     require: true,
     unique: true,
-    minlength: 10,
-    maxlength: 10,
+    // minlength: 10,
+    // maxlength: 10,
   },
   dob: { type: String, default: null, require: true },
   gender: {
@@ -40,4 +36,6 @@ const writerSchema = mongoose.Schema({
   dateUpdated:Date,
 });
 
-export default mongoose.model("writer", writerSchema);
+const writer = new mongoose.model("writer",writerSchema);
+
+module.exports = writer;
