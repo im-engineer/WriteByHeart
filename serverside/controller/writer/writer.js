@@ -121,3 +121,97 @@ export const findWriters = async (req, res) => {
     });
   }
 };
+
+
+
+// Create a new poetry
+const createPoetry = async (req, res) => {
+  try {
+    const writer = await writerModel.findById(req.params.writerId);
+
+    if (!writer) {
+      return res.status(404).json({ error: "writerModel not found" });
+    }
+
+    const poetry = {
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author,
+      genre: req.body.genre,
+      tags: req.body.tags
+    };
+
+    writer.poetry.push(poetry);
+    await writer.save();
+
+    return res.status(201).json({ message: "Poetry created successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+// Retrieve all poetry of a writer
+const getAllPoetry = async (req, res) => {
+  try {
+    const writer = await writerModel.findById(req.params.writerId);
+
+    if (!writer) {
+      return res.status(404).json({ error: "writerModel not found" });
+    }
+
+    return res.status(200).json(writer.poetry);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+// Update a poetry
+const updatePoetry = async (req, res) => {
+  try {
+    const writer = await writerModel.findById(req.params.writerId);
+
+    if (!writer) {
+      return res.status(404).json({ error: "writerModel not found" });
+    }
+
+    const poetry = writer.poetry.find(
+      (poem) => poem._id.toString() === req.params.poetryId
+    );
+
+    if (!poetry) {
+      return res.status(404).json({ error: "Poetry not found" });
+    }
+
+    poetry.title = req.body.title || poetry.title;
+    poetry.content = req.body.content || poetry.content;
+    poetry.author = req.body.author || poetry.author;
+    poetry.genre = req.body.genre || poetry.genre;
+    poetry.tags = req.body.tags || poetry.tags;
+
+    await writer.save();
+
+    return res.status(200).json({ message: "Poetry updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+// Delete a poetry
+const deletePoetry = async (req, res) => {
+  try {
+    const writer = await writerModel.findById(req.params.writerId);
+
+    if (!writer) {
+      return res.status(404).json({ error: "writerModel not found" });
+    }
+
+    writer.poetry.pull(req.params.poetryId);
+    await writer.save();
+
+    return res.status(200).json({ message: "Poetry deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export { createPoetry, getAllPoetry, updatePoetry, deletePoetry };

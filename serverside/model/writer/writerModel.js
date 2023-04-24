@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const poetrySchema = mongoose.Schema({
+  title: { type: String, required: false, trim: true },
+  content: { type: String, required: false },
+  author: { type: String, required: false },
+  genre: { type: String, required: false },
+  tags: [{ type: String }],
+  dateCreated: { type: Date, default: Date.now }
+});
+
 const writerSchema = mongoose.Schema({
   fullname: { type: String, default: null, require: true, trim: true },
   username: { type: String, default: null, require: true, trim: true },
@@ -8,8 +17,7 @@ const writerSchema = mongoose.Schema({
     type: String,
     default: null,
     require: true,
-    unique: true,
-  
+    unique: true
   },
   password: { type: String, default: null, require: true },
   phoneNumber: {
@@ -32,10 +40,11 @@ const writerSchema = mongoose.Schema({
     required: true,
   },
   image: { type: String, default: null, require: true },
-  datecreated:Date,
-  dateUpdated:Date,
+  datecreated: { type: Date, default: Date.now },
+  dateUpdated: { type: Date, default: Date.now },
+  poetry: [poetrySchema] // Embedding the poetry schema as a subdocument array
 });
 
-const writer = new mongoose.model("writer",writerSchema);
+const writer = mongoose.model("writer", writerSchema);
 
-module.exports = writer;
+export default writer;
