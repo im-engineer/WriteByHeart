@@ -1,11 +1,29 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const writerSchema = mongoose.Schema({
-  fullname: { type: String, default: null, require: true },
-  username: { type: String, default: null, require: true },
-  email: { type: String, default: null, require: true },
+  fullname: { type: String, default: null, require: true, trim: true },
+  username: { type: String, default: null, require: true, trim: true },
+  email: {
+    type: String,
+    default: null,
+    require: true,
+    unique: true,
+    validate(value) {
+      if (!validator.isEmail(value)) {
+        throw Error("not valid email");
+      }
+    },
+  },
   password: { type: String, default: null, require: true },
-  phoneNumber: { type: Number, default: null, require: true },
+  phoneNumber: {
+    type: Number,
+    default: null,
+    require: true,
+    unique: true,
+    minlength: 10,
+    maxlength: 10,
+  },
   dob: { type: String, default: null, require: true },
   gender: {
     type: String,
@@ -13,8 +31,13 @@ const writerSchema = mongoose.Schema({
     default: null,
     required: true,
   },
+  status: {
+    type: String,
+    required: true,
+  },
   image: { type: String, default: null, require: true },
-  createdAt: { type: String, default: new Date().toISOString() },
+  datecreated:Date,
+  dateUpdated:Date,
 });
 
 export default mongoose.model("writer", writerSchema);
