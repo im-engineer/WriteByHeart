@@ -1,22 +1,17 @@
 import mongoose from 'mongoose';
+mongoose.set('strictQuery', true);
 
 var config = require('./config/config');
 
 var configdata = config.get(process.env.Node_env).db;
-console.log("🚀 ~ file: db.js:6 ~ configdata:", configdata)
 import 'dotenv/config'
-var port = process.env.PORT || configdata.port
-var mongoUrl = `mongodb://${configdata.host}:${port}/${configdata.databaseName}`;
+var mongoUrl = `mongodb://${configdata.host}:${configdata.port}/${configdata.databaseName}`;
 
 
-var options= {
-    user:configdata.userName,
-    pass:configdata.password
-}
 
 export const mongoconnection = async() => {
     try{
-        await mongoose.connect(mongoUrl,options);
+        await mongoose.connect(mongoUrl);
         console.log("Connect to DB");
     }
     catch(e){

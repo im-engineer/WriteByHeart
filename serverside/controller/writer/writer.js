@@ -1,5 +1,5 @@
 import writerModel from "../../model/writer/writerModel";
-const CryptoJS = require('crypto-js');
+const CryptoJS = require("crypto-js");
 
 function generateKey() {
   // generate a random 256-bit key
@@ -7,12 +7,12 @@ function generateKey() {
 }
 
 function encryptData(data) {
-  return CryptoJS.AES.encrypt(data, 'secretData').toString();
+  return CryptoJS.AES.encrypt(data, "secretData").toString();
 }
 function decryptData(data) {
-  var bytes = CryptoJS.AES.decrypt(data, 'secretData');
+  var bytes = CryptoJS.AES.decrypt(data, "secretData");
   var originalText = bytes.toString(CryptoJS.enc.Utf8);
-  return originalText
+  return originalText;
 }
 
 export const writerJoined = async (req, res) => {
@@ -20,9 +20,8 @@ export const writerJoined = async (req, res) => {
     // Check if email already exists in the database
     const email = req.body.email;
     const existingWriter = await writerModel.find({});
-   const foundWriter = existingWriter.find(writer => writer.email );
-    const decryptemail = decryptData(foundWriter.email)
-    console.log("🚀 ~ file: writer.js:25 ~ writerJoined ~ decryptemail:", decryptemail)
+    const foundWriter = existingWriter.find((writer) => writer.email);
+    const decryptemail = decryptData(foundWriter.email);
     if (email == decryptemail) {
       return res.status(400).send({
         status: false,
@@ -33,19 +32,22 @@ export const writerJoined = async (req, res) => {
     // generate a new key for each piece of data
     const key = generateKey();
     const writerDetails = new writerModel({
-      fullname : encryptData(req.body.fullname, key),
-      username : encryptData(req.body.username, key),
-      email : encryptData(req.body.email, key),
-      password : encryptData(req.body.password, key),
-      phoneNumber : encryptData(req.body.phoneNumber, key),
-      dob : encryptData(req.body.dob, key),
-      gender : encryptData(req.body.gender, key),
-      status : req.body.status,
+      fullname: encryptData(req.body.fullname, key),
+      username: encryptData(req.body.username, key),
+      email: encryptData(req.body.email, key),
+      password: encryptData(req.body.password, key),
+      phoneNumber: encryptData(req.body.phoneNumber, key),
+      dob: encryptData(req.body.dob, key),
+      gender: encryptData(req.body.gender, key),
+      status: req.body.status,
       image: req.file.filename,
     });
     const writerData = await writerDetails.save();
-    console.log("🚀 ~ file: writer.js:15 ~ writerRegistration ~ writerData:", writerData)
-    if(writerData){
+    console.log(
+      "🚀 ~ file: writer.js:15 ~ writerRegistration ~ writerData:",
+      writerData
+    );
+    if (writerData) {
       res.send({
         status: true,
         message: "Registration done successfully",
@@ -62,22 +64,23 @@ export const writerJoined = async (req, res) => {
   }
 };
 
-
-
 export const writerLogin = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
     const writerData = await writerModel.findOne({});
-    console.log("🚀 ~ file: writer.js:33 ~ writerLogin ~ writerData", writerData);
+    console.log(
+      "🚀 ~ file: writer.js:33 ~ writerLogin ~ writerData",
+      writerData
+    );
     if (!writerData) {
       res.send({
         status: false,
         message: "No writer found",
       });
     } else {
-      const Password = decryptData(writerData.password)
-      const Email = decryptData(writerData.email)
+      const Password = decryptData(writerData.password);
+      const Email = decryptData(writerData.email);
       if (email == Email && password == Password) {
         res.send({
           status: true,
@@ -118,4 +121,3 @@ export const findWriters = async (req, res) => {
     });
   }
 };
-
