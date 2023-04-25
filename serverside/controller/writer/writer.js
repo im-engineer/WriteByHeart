@@ -68,7 +68,6 @@ export const countWriter = async (req, res) => {
   try {
     // Get the total count of writer documents in the database
     const totalWriters = await writerModel.countDocuments();
-    console.log("🚀 ~ file: writer.js:71 ~ countWriter ~ totalWriters:", totalWriters)
     res.send({
       status: true,
       message: "Total writers count retrieved successfully",
