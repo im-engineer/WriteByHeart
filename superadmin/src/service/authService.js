@@ -38,5 +38,14 @@ export const totalWriters = async () => {
     } catch (error) {
       console.error(`Error: ${error.message}`);
     }
-  };
+};
+
+export const totalactiveinactivewriters = async() => {
+    try{
+        const response = await axios.get(API_URL + "writer/total/active",axiosConfig);
+        return response
+    }catch(error){
+        console.log(`Error: ${error.message}`)
+    }
+}
   

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { totalWriters } from "../../service/authService";
+import { totalWriters, totalactiveinactivewriters } from "../../service/authService";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -13,7 +13,17 @@ function Dashboard() {
     };
     count();
   });
-  console.log(show);
+
+  const[status, setStatus] = useState(" ");
+
+  useEffect(() => {
+    const writerStatus = async () => {
+        const result = await totalactiveinactivewriters();
+        console.log("🚀 ~ file: Dashboard.js:22 ~ writerStatus ~ result:", result)
+        setStatus(result)
+    }
+    writerStatus()
+  })
 
   return (
     <div class="container">
@@ -36,13 +46,13 @@ function Dashboard() {
         <div class="col-md-4 col-xl-3">
           <div class="card bg-c-green order-card">
             <div class="card-block">
-              <h6 class="m-b-20">Orders Received</h6>
+              <h6 class="m-b-20">Active Writers</h6>
               <h2 class="text-right">
                 <i class="fa fa-rocket f-left"></i>
-                <span>486</span>
+                <span>{}</span>
               </h2>
               <p class="m-b-0">
-                Completed Orders<span class="f-right">351</span>
+                Total<span class="f-right">351 writer active</span>
               </p>
             </div>
           </div>
@@ -51,13 +61,13 @@ function Dashboard() {
         <div class="col-md-4 col-xl-3">
           <div class="card bg-c-yellow order-card">
             <div class="card-block">
-              <h6 class="m-b-20">Orders Received</h6>
+              <h6 class="m-b-20">Inactive writera</h6>
               <h2 class="text-right">
                 <i class="fa fa-refresh f-left"></i>
                 <span>486</span>
               </h2>
               <p class="m-b-0">
-                Completed Orders<span class="f-right">351</span>
+                Total <span class="f-right">351 are not active</span>
               </p>
             </div>
           </div>
