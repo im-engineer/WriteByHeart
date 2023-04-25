@@ -17,7 +17,7 @@ function Sidebar() {
       <div class="content">
         <Routes>
           <Route element={<ProtectedOutlet />}>
-            {/* <Route exact path="/dashboard" element={<Dashboard />} /> */}
+            <Route exact path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </div>

@@ -30,3 +30,13 @@ export const adminAccess = async (email,password) => {
             return null;
     }
 }
+
+export const totalWriters = async () => {
+    try {
+      const response = await axios.get(API_URL + "writer/total/count",axiosConfig); // Replace with your actual API endpoint URL
+      return response
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+    }
+  };
+  

@@ -29,7 +29,7 @@ console.log(input)
       console.log(apiResponse.data, "res");
       if (apiResponse.data.status === true) {
         dispatch(adminLogin(apiResponse.data));
-        navigate("/")
+        navigate("/dashboard")
 
       } else {
       }
@@ -42,7 +42,7 @@ console.log(input)
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   useEffect(() => {
     if(isLoggedIn){
-      navigate("/")
+      navigate("/dashboard")
     }
   }, [])
 
