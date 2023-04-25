@@ -1,5 +1,5 @@
 export const getAdminInfo = () => {
-  let user = JSON.parse(localStorage.getItem("users"));
+  let admin = JSON.parse(localStorage.getItem("admin"));
   // console.log(user);
-  return user;
+  return admin;
 };
