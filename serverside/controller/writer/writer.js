@@ -64,6 +64,52 @@ export const writerJoined = async (req, res) => {
   }
 };
 
+export const countWriter = async (req, res) => {
+  try {
+    // Get the total count of writer documents in the database
+    const totalWriters = await writerModel.countDocuments();
+    console.log("🚀 ~ file: writer.js:71 ~ countWriter ~ totalWriters:", totalWriters)
+    res.send({
+      status: true,
+      message: "Total writers count retrieved successfully",
+      totalWriters: totalWriters,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      status: false,
+      message: "Failed to retrieve writers count",
+      // error: error.message,
+    });
+  }
+};
+
+
+// Route handler for counting active and inactive writers
+export const countActiveInactiveWriters = async (req, res) => {
+  try {
+    // Count active writers
+    const activeWritersCount = await writerModel.countDocuments({ status: 'Active' });
+
+    // Count inactive writers
+    const inactiveWritersCount = await writerModel.countDocuments({ status: 'Inactive' });
+
+    // Send the response
+    res.send({
+      status: true,
+      activeWritersCount,
+      inactiveWritersCount,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      status: false,
+      message: 'Failed to count writers',
+    });
+  }
+};
+
+
 export const writerLogin = async (req, res) => {
   try {
     const email = req.body.email;
