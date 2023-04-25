@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux/es/exports";
+import Signin from "../SignIn/Signin"
 
 
 function Landingpage() {
@@ -16,9 +17,9 @@ function Landingpage() {
         {user.isLoggedIn ? (
           <div>
             <Sidebar />{" "}
-            {/* <Routes>
-              <Route path="/login" element={<Login />}></Route>
-            </Routes> */}
+            <Routes>
+              <Route path="/signin" element={<Signin/>}></Route>
+            </Routes>
           </div>
         ) : (
           <div>
