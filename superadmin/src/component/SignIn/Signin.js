@@ -10,18 +10,6 @@ import Navbar from "../Navbar/Navbar";
 function Signin() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (email && password) {
-  //     // make API call to submit the form data
-  //     console.log("Form submitted");
-  //   } else {
-  //     alert("Please fill in all the fields");
-  //   }
-  // };
   const [input, setInput] = useState({
     email: "",
     password: "",
