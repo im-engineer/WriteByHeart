@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Logo from "../../assets/logo/-logo.png";
 import "./Signin.css";
 import { adminAccess } from "../../service/authService";
 import { useNavigate } from "react-router-dom";
 import { adminLogin } from "../../store/authSlice";
-import {useDispatch} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 
 function Signin() {
@@ -28,12 +28,9 @@ console.log(input)
       const apiResponse = await adminAccess(input.email, input.password);
       console.log(apiResponse.data, "res");
       if (apiResponse.data.status === true) {
-        // setLoading(true);
         dispatch(adminLogin(apiResponse.data));
         navigate("/")
-        // setTimeout(() => {
-        //   navigate("/");
-        // }, 1000);
+
       } else {
       }
     } catch (e) {
@@ -42,13 +39,19 @@ console.log(input)
     }
   };
 
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  useEffect(() => {
+    if(isLoggedIn){
+      navigate("/")
+    }
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
     <div className="signin">
-      <Navbar/>
       <div
         className="signin--page"
         style={{ backgroundColor: "rgba(000,000,000,0.2)" }}

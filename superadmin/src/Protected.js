@@ -6,6 +6,6 @@ export default function Protected() {
     if(isLoggedIn){
         return<Outlet/>;
     }else{
-        return<Navigate to ="/login"/>
+        return<Navigate to ="/signin"/>
     }
 }

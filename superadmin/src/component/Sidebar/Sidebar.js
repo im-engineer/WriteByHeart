@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import ProtectedOutlet from '../../Protected';
-import Dashboard from "../../pages/Dashboard/Dashboard"
+import Dashboard from "../Dashboard/Dashboard"
 
 
 function Sidebar() {
@@ -17,7 +17,7 @@ function Sidebar() {
       <div class="content">
         <Routes>
           <Route element={<ProtectedOutlet />}>
-            <Route exact path="/dashboard" element={<Dashboard />} />
+            {/* <Route exact path="/dashboard" element={<Dashboard />} /> */}
           </Route>
         </Routes>
       </div>

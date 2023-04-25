@@ -1,6 +1,11 @@
-.App {
+.App  {
+  height:100vh;   
+  width: 100%;
+  background-image: url('./assets/jpeg/book.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;    
   text-align: center;
-}
+  background-attachment:fixed;}
 
 .App-logo {
   height: 40vmin;
