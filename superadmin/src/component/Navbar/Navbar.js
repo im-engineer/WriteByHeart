@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { adminLogout } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
 
 function Navbar() {
   const userdata = useSelector((state) => state.auth);
@@ -26,20 +25,17 @@ function Navbar() {
         <img src={Logo} alt="Logo" />
       </div>
       {userdata.isLoggedIn ? (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
-          <div></div>
+        <div>
           <button className="btn btn-outline-light" onClick={handellogout}>
-            <i className="fa-solid fa-power-off"></i>logout
+            <i class="fa-solid fa-power-off"></i>logout
           </button>
+          &nbsp;&nbsp;
         </div>
       ) : (
         <div className="links">
-          <Link to="/signin">Access</Link>
-        </div>
-      )}
-      {userdata.isLoggedIn && (
-        <div>
-          <Sidebar />
+          <button className="btn btn-outline-light">
+            <Link to="/signin">Access</Link>
+          </button>
         </div>
       )}
     </div>
