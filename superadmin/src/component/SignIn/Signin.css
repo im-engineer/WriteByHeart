@@ -1,9 +1,17 @@
+.signin{
+  height:100vh;   
+  width: 100%;
+  background-image: url('../../assets/jpeg/book.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;    
+  text-align: center;
+  background-attachment:fixed;
+}
 .signin--page {
-    height: 70vh;
-    margin: 7rem;
-    border-radius: 2rem;
-    overflow-y: auto;
-  
+    height: 90vh;
+    border-radius: 2rem;  
+    color: white;
+    padding-top: 5rem;
   }
   
   .signin--page h1 {
@@ -38,6 +46,7 @@
     border-left-style: hidden;
     border-bottom-style: groove;
     background: none;
+    color: white;
   }
   
   .no-outline:focus {

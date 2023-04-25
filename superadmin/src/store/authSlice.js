@@ -9,18 +9,18 @@ export const loginSlice = createSlice ({
     },
 
     reducers:{
-        userlogin(state,payload) {
+        adminLogin(state,payload) {
             console.log("payload",payload.payload)
             state.isLoggedIn = true;
             state.data = payload.payload;
         },
         
-        userlogout(state) {
+        adminLogout(state) {
             state.isLoggedIn = false;
             state.data = {}
         },
     }
 })
 
-export const {userlogin,userlogout} = loginSlice.actions;
+export const {adminLogin,adminLogout} = loginSlice.actions;
 export default loginSlice.reducer;

@@ -1,11 +1,15 @@
 import './App.css';
 import Landingpage from './component/LandingPage/Landingpage';
-// import {R}
+import { Route, Routes } from "react-router-dom";
+import Signin from "./component/SignIn/Signin"
 
 function App() {
   return (
     <div className="App">
-      <Landingpage/>
+      <Routes>
+        <Route path='/' element={<Landingpage/>}/>
+        <Route path='/signin' element={<Signin/>}/>
+      </Routes>
     </div>
   );
 }
