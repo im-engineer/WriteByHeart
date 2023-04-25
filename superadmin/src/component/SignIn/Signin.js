@@ -5,7 +5,6 @@ import { adminAccess } from "../../service/authService";
 import { useNavigate } from "react-router-dom";
 import { adminLogin } from "../../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../Navbar/Navbar";
 
 function Signin() {
   let navigate = useNavigate();
