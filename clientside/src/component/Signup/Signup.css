@@ -6,9 +6,9 @@
     overflow-y: auto;
   }
 
-  .blur-background {
+  /* .blur-background {
     backdrop-filter: blur(1px);
-  }
+  } */
 
   .signup--page h1{
     margin-top: 2rem;

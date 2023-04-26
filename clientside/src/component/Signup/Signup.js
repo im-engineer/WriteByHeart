@@ -128,10 +128,10 @@ function Signup() {
   // };
   
   return (
-    <div>
+    <>
       <div
         className="signup--page"
-        style={{ backgroundColor: "rgba(000,000,000,0.2)" }}
+        style={{ backgroundColor: "rgba(000,000,000,0.3)" }}
       >
         <div className="container">
           <div className="row">
@@ -232,7 +232,7 @@ function Signup() {
           </div>
         </div>
       </div>
-    </div>
+      </>
   );
 }
 export default Signup;

@@ -27,7 +27,7 @@ function Navbar() {
       />
       <nav
         className="navbar navbar-expand-lg navbar-dark"
-        style={{ backgroundColor: "rgba(000,000,000,0.2)" }}
+        style={{ backgroundColor: "rgba(000,000,000,0.4)" }}
       >
         <nav className="container-fluid">
           <img src={logo} alt="" />
