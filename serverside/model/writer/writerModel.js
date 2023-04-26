@@ -7,6 +7,7 @@ const poetrySchema = mongoose.Schema({
   author: { type: String, required: false },
   genre: { type: String, required: false },
   tags: [{ type: String }],
+  liked : {type : Number, required : false},
   dateCreated: { type: Date, default: Date.now }
 });
 

@@ -112,7 +112,9 @@ export const countActiveInactiveWriters = async (req, res) => {
 export const writerLogin = async (req, res) => {
   try {
     const email = req.body.email;
+    console.log("🚀 ~ file: writer.js:115 ~ writerLogin ~ email:", email)
     const password = req.body.password;
+    console.log("🚀 ~ file: writer.js:117 ~ writerLogin ~ password:", password)
     const writerData = await writerModel.findOne({});
     console.log(
       "🚀 ~ file: writer.js:33 ~ writerLogin ~ writerData",
@@ -125,7 +127,9 @@ export const writerLogin = async (req, res) => {
       });
     } else {
       const Password = decryptData(writerData.password);
+      console.log("🚀 ~ file: writer.js:130 ~ writerLogin ~ Password:", Password)
       const Email = decryptData(writerData.email);
+      console.log("🚀 ~ file: writer.js:132 ~ writerLogin ~ Email:", Email)
       if (email == Email && password == Password) {
         res.send({
           status: true,
@@ -172,7 +176,7 @@ export const findWriters = async (req, res) => {
 // Create a new poetry
 const createPoetry = async (req, res) => {
   try {
-    const writer = await writerModel.findById(req.params.writerId);
+    const writer = await writerModel.findById(mongoose.Types.ObjectId(req.params.writerId));
 
     if (!writer) {
       return res.status(404).json({ error: "writerModel not found" });
@@ -183,7 +187,8 @@ const createPoetry = async (req, res) => {
       content: req.body.content,
       author: req.body.author,
       genre: req.body.genre,
-      tags: req.body.tags
+      tags: req.body.tags,
+      liked : req.body.liked
     };
 
     writer.poetry.push(poetry);
@@ -196,12 +201,13 @@ const createPoetry = async (req, res) => {
 };
 
 // Retrieve all poetry of a writer
+
 const getAllPoetry = async (req, res) => {
   try {
-    const writer = await writerModel.findById(req.params.writerId);
+    const writer = await writerModel.findById(req.params.writerId); // Use Mongoose methods with proper import
 
     if (!writer) {
-      return res.status(404).json({ error: "writerModel not found" });
+      return res.status(404).json({ error: "Writer not found" });
     }
 
     return res.status(200).json(writer.poetry);
@@ -209,6 +215,7 @@ const getAllPoetry = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
 
 // Update a poetry
 const updatePoetry = async (req, res) => {
