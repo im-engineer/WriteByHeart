@@ -19,7 +19,6 @@ function Dashboard() {
   useEffect(() => {
     const writerStatus = async () => {
         const result = await totalactiveinactivewriters();
-        console.log("🚀 ~ file: Dashboard.js:22 ~ writerStatus ~ result:", result)
         setStatus(result)
     }
     writerStatus()
@@ -33,7 +32,7 @@ function Dashboard() {
             <div class="card-block">
               <h6 class="m-b-20">Total Writers</h6>
               <h2 class="text-right">
-                <i class="fa fa-user f-left"></i>
+                <i class="fa fa-users  f-left"></i>
                 <span>{show}</span>
               </h2>
               <p class="m-b-0">
@@ -48,11 +47,11 @@ function Dashboard() {
             <div class="card-block">
               <h6 class="m-b-20">Active Writers</h6>
               <h2 class="text-right">
-                <i class="fa fa-rocket f-left"></i>
-                <span>{}</span>
+                <i class="fa fa-user-check f-left"></i>
+                <span>{status.data.activeWritersCount}</span>
               </h2>
               <p class="m-b-0">
-                Total<span class="f-right">351 writer active</span>
+                Total<span class="f-right">{status.data.activeWritersCount}  writer active</span>
               </p>
             </div>
           </div>
@@ -61,13 +60,13 @@ function Dashboard() {
         <div class="col-md-4 col-xl-3">
           <div class="card bg-c-yellow order-card">
             <div class="card-block">
-              <h6 class="m-b-20">Inactive writera</h6>
+              <h6 class="m-b-20">Inactive writer</h6>
               <h2 class="text-right">
-                <i class="fa fa-refresh f-left"></i>
-                <span>486</span>
+                <i class="fa fa-users-slash f-left"></i>
+                <span>{status.data.inactiveWritersCount}</span>
               </h2>
               <p class="m-b-0">
-                Total <span class="f-right">351 are not active</span>
+                Total <span class="f-right">{status.data.inactiveWritersCount} are not active</span>
               </p>
             </div>
           </div>
