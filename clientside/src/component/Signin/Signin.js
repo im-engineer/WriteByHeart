@@ -4,20 +4,22 @@ import "./Signin.css";
 import { writerAccess } from "../../service/authService";
 import { useNavigate } from "react-router-dom";
 import { writerLogin } from "../../store/authSlice";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
 
 function Signin() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
- 
+
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-console.log(input)
+
+  const [loginSuccess, setLoginSuccess] = useState(false); // State variable for login success status
+
   const onHandleChange = (e) => {
     const { name, value } = e.target;
-    setInput((previousValue) => ({	
+    setInput((previousValue) => ({
       ...previousValue,
       [name]: value,
     }));
@@ -28,17 +30,13 @@ console.log(input)
       const apiResponse = await writerAccess(input.email, input.password);
       console.log(apiResponse.data, "res");
       if (apiResponse.data.status === true) {
-        // setLoading(true);
         dispatch(writerLogin(apiResponse.data));
-        navigate("/")
-        // setTimeout(() => {
-        //   navigate("/");
-        // }, 1000);
+        setLoginSuccess(true); // Set login success to true
+        navigate("/");
       } else {
       }
     } catch (e) {
-    console.log("🚀 ~ file: SignIn.js ~ line 39 ~ Login ~ e", e);
-
+      console.log("🚀 ~ file: SignIn.js ~ line 39 ~ Login ~ e", e);
     }
   };
 
@@ -75,10 +73,14 @@ console.log(input)
                   name="password"
                   // value={password}
                   onChange={(e) => onHandleChange(e)}
-                  minLength="8"
+                  // minLength="8"
                   required
                 />
-                <button type="submit" className="btn btn-outline-dark" onClick={Login}>
+                <button
+                  type="submit"
+                  className="btn btn-outline-dark"
+                  onClick={Login}
+                >
                   Access
                 </button>
               </form>
@@ -89,6 +91,11 @@ console.log(input)
           </div>
         </div>
       </div>
+      {loginSuccess && ( // Render alert message if login is successful
+        <div className="alert alert-success">
+          Login successful! Close the popup.
+        </div>
+      )}
     </div>
   );
 }

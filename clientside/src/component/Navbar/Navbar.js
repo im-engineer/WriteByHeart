@@ -5,6 +5,10 @@ import "./Navbar.css";
 import logo from "../../assets/logo/-logo.png";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { writerlogout } from "../../store/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [modalOpen, setModalOpen] = useState(null);
@@ -15,6 +19,17 @@ function Navbar() {
 
   const isJoinModalOpen = modalOpen === "join";
   const isSignInModalOpen = modalOpen === "signIn";
+
+  const userdata = useSelector((state) => state.auth);
+  console.log(userdata, "user");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
+  const handellogout = () => {
+    dispatch(writerlogout());
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <div>
@@ -42,69 +57,92 @@ function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/publish">
-                  Publish
-                </Link>
-              </li>
-              
-             
-              <li className="nav-item">
-                <Link
-                  className="nav-link disabled"
-                  to="/"
-                  tabIndex="-1"
-                  aria-disabled="true"
+          {userdata.isLoggedIn ? (
+            <>
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link active"
+                      aria-current="page"
+                      to="/publish"
+                    >
+                      Publish
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link disabled"
+                      to="/"
+                      tabIndex="-1"
+                      aria-disabled="true"
+                    >
+                      Disabled
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <button
+                  className="btn btn-outline-light"
+                  onClick={handellogout}
                 >
-                  Disabled
+                  <i class="fa-solid fa-power-off"></i>logout
+                </button>
+                &nbsp;&nbsp;
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <Link
+                  className="navlink"
+                  style={{
+                    padding: "1rem",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                  onClick={() => toggleModal("join")}
+                >
+                  <i className="fa fa-user-plus" />
+                  Join
                 </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <Link
-              className="navlink"
-              style={{
-                padding: "1rem",
-                textDecoration: "none",
-                color: "white",
-              }}
-              onClick={() => toggleModal("join")}
-            >
-              <i className="fa fa-user-plus" />
-              Join
-            </Link>
-            <Modal
-              isOpen={isJoinModalOpen}
-              onRequestClose={toggleModal}
-              className="blur-background"
-            >
-              <Signup />
-            </Modal>
-          </div>
-          <div>
-            <Link
-              className="navlink"
-              style={{
-                padding: "1rem",
-                textDecoration: "none",
-                color: "white",
-              }}
-              onClick={() => toggleModal("signIn")}
-            >
-              <i className="fa fa-sign-in-alt" />
+                <Modal
+                  isOpen={isJoinModalOpen}
+                  onRequestClose={toggleModal}
+                  className="blur-background"
+                >
+                  <Signup />
+                </Modal>
+              </div>
+              <div>
+                <Link
+                  className="navlink"
+                  style={{
+                    padding: "1rem",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                  onClick={() => toggleModal("signIn")}
+                >
+                  <i className="fa fa-sign-in-alt" />
                   Access
-            </Link>
-            <Modal
-              isOpen={isSignInModalOpen}
-              onRequestClose={toggleModal}
-              className="blur-background"
-            >
-              <Signin />
-            </Modal>
-          </div>
+                </Link>
+                <Modal
+                  isOpen={isSignInModalOpen}
+                  onRequestClose={toggleModal}
+                  className="blur-background"
+                >
+                  <Signin />
+                </Modal>
+              </div>
+            </>
+          )}
         </nav>
       </nav>
     </div>

@@ -1,11 +1,66 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.latestpoetry--page{
-    height:100vh;
-    width: 100%;   
-    background: linear-gradient(106.7deg, rgb(245, 167, 191) -6.2%, rgb(201, 218, 238) 46.4%, rgb(164, 240, 229) 86.4%);
+.latestpoetry--page {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    106.7deg,
+    rgb(245, 167, 191) -6.2%,
+    rgb(201, 218, 238) 46.4%,
+    rgb(164, 240, 229) 86.4%
+  );
+}
+
+/* LatestPoetry.css */
+
+.header {
+  /* Styles for the header */
+  background-color: #333;
+  padding: 1rem;
+}
+
+.header h3 {
+  color: white;
+  margin: 0;
+}
+
+.card-container {
+  /* Add styles for the card container if needed */
+  display: flex;
+  flex-wrap: wrap; /* Wrap cards to next line if necessary */
+  gap: 1rem; /* Add gap between cards */
+}
+
+.card {
+  /* Add styles for the card */
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  flex-basis: calc(
+    33.33% - 1rem
+  ); /* Adjust the width of cards based on your design */
+  box-sizing: border-box;
+  /* Add any other styles as needed */
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+.card-header {
+  /* Styles for the card header */
+  background-color: #f8f8f8;
+  padding: 1rem;
+}
+
+.card h4 {
+  /* Add styles for the card title */
+  margin: 0;
+}
+
+.card p {
+  /* Add styles for the card content */
+  margin-top: 0.5rem;
 }
