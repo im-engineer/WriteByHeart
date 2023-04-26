@@ -1,7 +1,21 @@
 .profile--page {
-    height: 100vh;
+    height: 98vh;
     width: 100%;
     background: linear-gradient(123.5deg, rgb(244, 219, 251) 29.3%, rgb(255, 214, 214) 67.1%);
 
 }
 
+.profile--page .container .header h5{
+    /* float: left; */
+}
+
+.profile--page .user .user--info{
+    margin-top: 4rem;
+}
+
+.profile--page .user .user--image img{
+    margin-top: 4rem;
+    width: 30%;
+    height: 25vh;
+    border-radius: 50% 50%;
+}
