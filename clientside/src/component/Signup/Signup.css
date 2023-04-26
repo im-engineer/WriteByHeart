@@ -23,10 +23,11 @@
   }
 
   .signup--page img{
-    width: 70%;
-    height: 50vh;
+    width: 40%;
+    height: 30vh;
     float: right;
     padding-right: 5rem;
+    margin-top: 5rem;
 
   }
 

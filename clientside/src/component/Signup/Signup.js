@@ -75,13 +75,13 @@ function Signup() {
     image: null,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput((previousValue) => ({
-      ...previousValue,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setInput((previousValue) => ({
+  //     ...previousValue,
+  //     [name]: value,
+  //   }));
+  // };
   
   const onFileChange = (e) => {
     setInput((previous) => ({
