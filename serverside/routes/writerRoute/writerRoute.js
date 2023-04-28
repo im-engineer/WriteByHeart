@@ -9,6 +9,6 @@ router.get("/all/list",findWriters)
 router.get("/total/count",countWriter)
 router.get("/total/active",countActiveInactiveWriters)
 router.post("/:writerId/publish/poetry",createPoetry)
-router.get("/getAllPoetry/:writerId",getAllPoetry)
+router.get("/AllPoetry",getAllPoetry)
 
 export default router;

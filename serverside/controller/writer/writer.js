@@ -116,10 +116,7 @@ export const writerLogin = async (req, res) => {
     const password = req.body.password;
     console.log("🚀 ~ file: writer.js:117 ~ writerLogin ~ password:", password)
     const writerData = await writerModel.findOne({});
-    console.log(
-      "🚀 ~ file: writer.js:33 ~ writerLogin ~ writerData",
-      writerData
-    );
+    
     if (!writerData) {
       res.send({
         status: false,
@@ -204,18 +201,18 @@ const createPoetry = async (req, res) => {
 
 const getAllPoetry = async (req, res) => {
   try {
-    const writer = await writerModel.findById(req.params.writerId); // Use Mongoose methods with proper import
+    const writers = await writerModel.find({}); // Use the find() method to get all writers, and select only the poetry field
+    const poetry = writers.flatMap(writer => writer.poetry); // Extract the poetry field from each writer document and flatten the resulting array
 
-    if (!writer) {
-      return res.status(404).json({ error: "Writer not found" });
+    if (!poetry || poetry.length === 0) {
+      return res.status(404).json({ error: "Poetry not found" });
     }
 
-    return res.status(200).json(writer.poetry);
+    return res.status(200).json(poetry);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 };
-
 
 // Update a poetry
 const updatePoetry = async (req, res) => {
