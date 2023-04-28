@@ -37,3 +37,14 @@ export const writerAccess = async (email,password) => {
             return null;
     }
 }
+
+export const getAllPoetry = async () => {
+    try{
+        const response = await axios.get(API_URL + `writer/allPoetry`, axiosConfig)
+        return response
+        console.log("🚀 ~ file: authService.js:45 ~ getAllPoetry ~ response:", response)
+    }
+    catch(error){
+        console.log(`error: ${error}`)
+    }
+}
