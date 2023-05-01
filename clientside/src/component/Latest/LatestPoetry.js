@@ -6,7 +6,7 @@ import { getAllPoetry } from "../../service/authService";
 function LatestPoetry() {
   const [poetry, setPoetry] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const itemsPerPage = 6; // Number of items to display per page
 
   useEffect(() => {
     const fetchPoetry = async () => {
@@ -19,33 +19,25 @@ function LatestPoetry() {
     fetchPoetry();
   }, []);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = poetry.slice(indexOfFirstItem, indexOfLastItem);
+  // Calculate total number of pages
+  const totalPages = Math.ceil(poetry.length / itemsPerPage);
 
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(poetry.length / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  // Update current page
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
-  const renderPageNumbers = pageNumbers.map((number) => {
-    return (
-      <li
-        key={number}
-        className={currentPage === number ? "active" : null}
-        onClick={() => setCurrentPage(number)}
-      >
-        {number}
-      </li>
-    );
-  });
+  // Calculate start and end index for current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
 
   return (
     <div className="latestpoetry--page">
       <h3 style={{ color: "white", padding: "1rem" }}>Recently Added Poetry</h3>
       <div className="row d-flex justify-content-center align-items-center">
-        {currentItems.map((poem) => (
-          <Card className="card_style mx-2" key={poem.id}>
+        {poetry.slice(startIndex, endIndex).map((poem) => (
+          <Card className="card_style mx-1" key={poem.id}>
             <div className="card">
               <Card.Text>{poem.title}</Card.Text>
               <Card.Text>{poem.author}</Card.Text>
@@ -55,24 +47,24 @@ function LatestPoetry() {
           </Card>
         ))}
       </div>
-      <ul id="page-numbers">{renderPageNumbers}</ul>
       <div className="pagination-buttons">
-        <button
-          onClick={() =>
-            setCurrentPage((prevPage) => (prevPage === 1 ? prevPage : prevPage - 1))
-          }
-        >
-          Previous
-        </button>
-        <button
-          onClick={() =>
-            setCurrentPage((prevPage) =>
-              prevPage === pageNumbers.length ? prevPage : prevPage + 1
-            )
-          }
-        >
-          Next
-        </button>
+      <button
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+              className="pagination-button"
+            >
+              <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+              className="pagination-button"
+            >
+              <i class="fa fa-angle-double-right"  aria-hidden="true"></i>
+            </button>
       </div>
     </div>
   );

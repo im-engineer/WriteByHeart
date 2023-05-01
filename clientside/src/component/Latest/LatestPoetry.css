@@ -40,13 +40,13 @@
   background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 0.5rem;
   flex-basis: calc(
     33.33% - 1rem
   ); /* Adjust the width of cards based on your design */
   box-sizing: border-box;
   /* Add any other styles as needed */
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   margin-bottom: 1rem;
 }
 .card-header {
@@ -62,5 +62,35 @@
 
 .card p {
   /* Add styles for the card content */
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination-button {
+  background: linear-gradient(
+    106.7deg,
+    rgb(150, 60, 87) -6.2%,
+    rgb(201, 218, 238) 56.4%,
+    rgb(12, 87, 76) 86.4%
+  );  
+  color: #FFFFFF; /* Set text color */
+  margin-right: 10px; /* Set right margin */
+  border-radius: 50%; /* Set border radius */
+  cursor: pointer; /* Set cursor to pointer */
+  font-size: 24px;
+  margin-left: 10px;
+  height: 7vh;
+  width: 7vh;
+  border: #89abe3ff;
+  /* Add any other styles as needed */
+}
+
+.pagination-button:disabled {
+  opacity: 0.5; /* Set opacity for disabled state */
+  cursor: default; /* Set cursor to default for disabled state */
 }
