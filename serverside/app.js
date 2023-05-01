@@ -17,6 +17,6 @@ app.use(bodyParser.json());
 
 app.use("/admin",adminRoute)
 app.use("/writer",writerRoute)
-app.use("/uploads",express.static("./uploads"));
+app.use("/uploads",express.static("Image"));
 
 export default app;
