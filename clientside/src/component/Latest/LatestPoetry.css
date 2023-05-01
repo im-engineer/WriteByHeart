@@ -28,6 +28,8 @@
     rgb(201, 218, 238) 46.4%,
     rgb(164, 240, 229) 86.4%
   );
+  padding: 1rem;
+
 }
 
 /* LatestPoetry.css */
@@ -83,11 +85,12 @@
 @media (max-width: 768px) {
   .latestpoetry--page{
     overflow-y: scroll;
+    padding: 1rem;
   }
   .card {
     flex-basis: 100%;
     margin-bottom: 1rem;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 
   }
 

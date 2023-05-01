@@ -32,7 +32,7 @@ function Signin() {
       if (apiResponse.data.status === true) {
         dispatch(writerLogin(apiResponse.data));
         setLoginSuccess(true); // Set login success to true
-        navigate("/");
+        navigate("/publish");
       } else {
       }
     } catch (e) {
