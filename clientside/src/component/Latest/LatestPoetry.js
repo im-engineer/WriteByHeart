@@ -36,7 +36,7 @@ function LatestPoetry() {
       <h3 style={{ color: "white", padding: "1rem" }}>Recently Added Poetry</h3>
       <div className="row d-flex justify-content-center align-items-center">
         {poetry.map((poem) => (
-          <Card className="card_style mx-1" key={poem.id}>
+          <Card className="mx-1" key={poem.id} style={{ backgroundImage: `url(${poem.image})`,backgroundSize:"cover", backgroundPosition:"center center" }}>
             <div className="card">
               <Card.Text>{poem.title}</Card.Text>
               <Card.Text>{poem.author}</Card.Text>

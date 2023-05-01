@@ -53,19 +53,16 @@
 }
 
 .card {
-  /* Add styles for the card */
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 5px;
   padding: 0.5rem;
   flex-basis: calc(
     33.33% - 1rem
-  ); /* Adjust the width of cards based on your design */
+  );
   box-sizing: border-box;
-  /* Add any other styles as needed */
-  /* border: 1px solid #ccc; */
   margin-bottom: 1rem;
 }
+
 .card-header {
   /* Styles for the card header */
   background-color: #f8f8f8;
