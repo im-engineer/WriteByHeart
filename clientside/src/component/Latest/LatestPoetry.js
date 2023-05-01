@@ -5,9 +5,8 @@ import { getAllPoetry } from "../../service/authService";
 
 function LatestPoetry() {
   const [poetry, setPoetry] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Number of items to display per page
-
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const itemsPerPage = 10;
   useEffect(() => {
     const fetchPoetry = async () => {
       const result = await getAllPoetry();
@@ -19,24 +18,24 @@ function LatestPoetry() {
     fetchPoetry();
   }, []);
 
-  // Calculate total number of pages
-  const totalPages = Math.ceil(poetry.length / itemsPerPage);
+  // // Calculate total number of pages
+  // const totalPages = Math.ceil(poetry.length / itemsPerPage);
 
-  // Update current page
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
+  // // Update current page
+  // const handlePageChange = (newPage) => {
+  //   setCurrentPage(newPage);
+  // };
 
-  // Calculate start and end index for current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  // // Calculate start and end index for current page
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
 
 
   return (
     <div className="latestpoetry--page">
       <h3 style={{ color: "white", padding: "1rem" }}>Recently Added Poetry</h3>
       <div className="row d-flex justify-content-center align-items-center">
-        {poetry.slice(startIndex, endIndex).map((poem) => (
+        {poetry.map((poem) => (
           <Card className="card_style mx-1" key={poem.id}>
             <div className="card">
               <Card.Text>{poem.title}</Card.Text>
@@ -47,7 +46,7 @@ function LatestPoetry() {
           </Card>
         ))}
       </div>
-      <div className="pagination-buttons">
+      {/* <div className="pagination-buttons">
       <button
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
@@ -65,7 +64,7 @@ function LatestPoetry() {
             >
               <i class="fa fa-angle-double-right"  aria-hidden="true"></i>
             </button>
-      </div>
+      </div> */}
     </div>
   );
 }

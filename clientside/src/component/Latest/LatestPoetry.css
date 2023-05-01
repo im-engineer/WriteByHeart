@@ -13,6 +13,21 @@
     rgb(201, 218, 238) 46.4%,
     rgb(164, 240, 229) 86.4%
   );
+  overflow-y: scroll;
+}
+
+.latestpoetry--page::-webkit-scrollbar {
+  width: 1px;
+}
+
+.latestpoetry--page::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  background: linear-gradient(
+    106.7deg,
+    rgb(245, 167, 191) -6.2%,
+    rgb(201, 218, 238) 46.4%,
+    rgb(164, 240, 229) 86.4%
+  );
 }
 
 /* LatestPoetry.css */
@@ -65,6 +80,33 @@
   /* margin-top: 0.5rem; */
 }
 
+@media (max-width: 768px) {
+  .latestpoetry--page{
+    overflow-y: scroll;
+  }
+  .card {
+    flex-basis: 100%;
+    margin-bottom: 1rem;
+    overflow-y: scroll;
+
+  }
+
+  .pagination-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Adjust this value as needed */
+    background-color: #f7f7f7;
+    z-index: 10;
+  }
+  
+}
+
+
 .pagination-buttons {
   display: flex;
   justify-content: center;
@@ -94,3 +136,4 @@
   opacity: 0.5; /* Set opacity for disabled state */
   cursor: default; /* Set cursor to default for disabled state */
 }
+
