@@ -8,6 +8,7 @@ const poetrySchema = mongoose.Schema({
   genre: { type: String, required: false },
   tags: [{ type: String }],
   liked : {type : Number, required : false},
+  image: { type: String, default: null, require: true },
   dateCreated: { type: Date, default: Date.now }
 });
 

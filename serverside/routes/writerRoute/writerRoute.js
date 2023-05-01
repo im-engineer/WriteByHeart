@@ -8,7 +8,7 @@ router.post("/login",writerLogin)
 router.get("/all/list",findWriters)
 router.get("/total/count",countWriter)
 router.get("/total/active",countActiveInactiveWriters)
-router.post("/:writerId/publish/poetry",createPoetry)
-router.get("/AllPoetry",getAllPoetry)
+router.post("/:writerId/publish/poetry",upload.single('image'),createPoetry)
+router.get("/AllPoetry",upload.single('image'),getAllPoetry)
 
 export default router;

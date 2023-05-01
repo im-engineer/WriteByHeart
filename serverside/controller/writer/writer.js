@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import writerModel from "../../model/writer/writerModel";
 const CryptoJS = require("crypto-js");
 
@@ -185,7 +186,8 @@ const createPoetry = async (req, res) => {
       author: req.body.author,
       genre: req.body.genre,
       tags: req.body.tags,
-      liked : req.body.liked
+      liked : req.body.liked,
+      image: req.file.filename,
     };
 
     writer.poetry.push(poetry);
