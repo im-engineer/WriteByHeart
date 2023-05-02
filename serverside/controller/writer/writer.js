@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import writerModel from "../../model/writer/writerModel";
 const CryptoJS = require("crypto-js");
+// const io = require("socket.io");
+
 
 function generateKey() {
   // generate a random 256-bit key
@@ -44,11 +46,13 @@ export const writerJoined = async (req, res) => {
       image: req.file.filename,
     });
     const writerData = await writerDetails.save();
-    console.log(
-      "🚀 ~ file: writer.js:15 ~ writerRegistration ~ writerData:",
-      writerData
-    );
     if (writerData) {
+      // Emit a notification event to all connected clients
+      // io.emit("notification", {
+      //   title: "New Writer Joined",
+      //   message: `Writer ${writerData.fullname} has joined`,
+      // });
+
       res.send({
         status: true,
         message: "Registration done successfully",
