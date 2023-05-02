@@ -8,5 +8,11 @@
     left: 0;
     overflow-x: hidden;
     padding-top: 60px;
-  }
+}
+
+.nav-link{
+  margin-top: 2rem;
+}
+
+
   
