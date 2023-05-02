@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const userdata = useSelector((state) => state.auth);
-  console.log(userdata, "user");
+  // console.log(userdata.data.result.image, "user");
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -18,6 +18,7 @@ function Navbar() {
     localStorage.clear();
     navigate("/");
   };
+  let path = `https://localhost:5001/Image/${userdata?.data?.result?.image}`
 
   return (
     <div className="navbar">
@@ -26,6 +27,7 @@ function Navbar() {
       </div>
       {userdata.isLoggedIn ? (
         <div>
+          <img className="profile-image" src={path} alt="Profile"/>
           <button className="btn btn-outline-light" onClick={handellogout}>
             <i class="fa-solid fa-power-off"></i>logout
           </button>
