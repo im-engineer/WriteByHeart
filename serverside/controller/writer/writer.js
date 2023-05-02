@@ -154,10 +154,21 @@ export const writerLogin = async (req, res) => {
 export const findWriters = async (req, res) => {
   try {
     const writers = await writerModel.find({});
+    const decryptedData = writers.map(writer => ({
+      "_id": writer._id,
+      "fullname" : decryptData(writer.fullname),
+      "username" : decryptData(writer.username),
+      "email" : decryptData(writer.email),
+      "phoneNumber" : decryptData(writer.phoneNumber),
+      "dob" : decryptData(writer.dob),
+      "gender" : decryptData(writer.gender),
+      "status":writer.status 
+    }));
+    console.log("🚀 ~ file: writer.js:161 ~ findWriters ~ decryptedData:", decryptedData)
     res.send({
       status: true,
       message: "List of writers",
-      result: writers,
+      result: decryptedData,
     });
   } catch (error) {
     console.error(error);
@@ -168,6 +179,7 @@ export const findWriters = async (req, res) => {
     });
   }
 };
+
 
 
 
