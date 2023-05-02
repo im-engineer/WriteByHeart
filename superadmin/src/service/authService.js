@@ -49,3 +49,11 @@ export const totalactiveinactivewriters = async() => {
     }
 }
   
+export const writerList = async() => {
+    try{
+        const response = await axios.get(API_URL + "writer/all/list", axiosConfig);
+        return response
+    }catch(error){
+        console.log(`Error: ${error.message}`)
+    }
+}
