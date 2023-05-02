@@ -50,3 +50,9 @@ body{
 .f-right {
     float: right;
 }
+
+@media only screen and (max-width: 767px) {
+    .card{
+        margin-left: 5rem
+    }
+}

@@ -49,7 +49,7 @@ export const totalactiveinactivewriters = async() => {
     }
 }
   
-export const writerList = async() => {
+export const writersList = async() => {
     try{
         const response = await axios.get(API_URL + "writer/all/list", axiosConfig);
         return response
