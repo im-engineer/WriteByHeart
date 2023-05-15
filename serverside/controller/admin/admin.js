@@ -53,7 +53,6 @@ export const adminLogin = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const adminData = await admin.findOne({});
-    console.log("🚀 ~ file: writer.js:33 ~ writerLogin ~ adminData", adminData);
     if (!adminData) {
       res.send({
         status: false,
