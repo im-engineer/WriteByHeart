@@ -3,7 +3,6 @@ import writerModel from "../../model/writer/writerModel";
 const CryptoJS = require("crypto-js");
 // const io = require("socket.io");
 
-
 function generateKey() {
   // generate a random 256-bit key
   return CryptoJS.lib.WordArray.random(32);
@@ -88,15 +87,18 @@ export const countWriter = async (req, res) => {
   }
 };
 
-
 // Route handler for counting active and inactive writers
 export const countActiveInactiveWriters = async (req, res) => {
   try {
     // Count active writers
-    const activeWritersCount = await writerModel.countDocuments({ status: 'Active' });
+    const activeWritersCount = await writerModel.countDocuments({
+      status: "Active",
+    });
 
     // Count inactive writers
-    const inactiveWritersCount = await writerModel.countDocuments({ status: 'Inactive' });
+    const inactiveWritersCount = await writerModel.countDocuments({
+      status: "Inactive",
+    });
 
     // Send the response
     res.send({
@@ -108,20 +110,19 @@ export const countActiveInactiveWriters = async (req, res) => {
     console.error(error);
     res.status(500).send({
       status: false,
-      message: 'Failed to count writers',
+      message: "Failed to count writers",
     });
   }
 };
 
-
 export const writerLogin = async (req, res) => {
   try {
     const email = req.body.email;
-    console.log("🚀 ~ file: writer.js:115 ~ writerLogin ~ email:", email)
+    console.log("🚀 ~ file: writer.js:115 ~ writerLogin ~ email:", email);
     const password = req.body.password;
-    console.log("🚀 ~ file: writer.js:117 ~ writerLogin ~ password:", password)
+    console.log("🚀 ~ file: writer.js:117 ~ writerLogin ~ password:", password);
     const writerData = await writerModel.findOne({});
-    
+
     if (!writerData) {
       res.send({
         status: false,
@@ -129,9 +130,12 @@ export const writerLogin = async (req, res) => {
       });
     } else {
       const Password = decryptData(writerData.password);
-      console.log("🚀 ~ file: writer.js:130 ~ writerLogin ~ Password:", Password)
+      console.log(
+        "🚀 ~ file: writer.js:130 ~ writerLogin ~ Password:",
+        Password
+      );
       const Email = decryptData(writerData.email);
-      console.log("🚀 ~ file: writer.js:132 ~ writerLogin ~ Email:", Email)
+      console.log("🚀 ~ file: writer.js:132 ~ writerLogin ~ Email:", Email);
       if (email == Email && password == Password) {
         res.send({
           status: true,
@@ -158,17 +162,20 @@ export const writerLogin = async (req, res) => {
 export const findWriters = async (req, res) => {
   try {
     const writers = await writerModel.find({});
-    const decryptedData = writers.map(writer => ({
-      "_id": writer._id,
-      "fullname" : decryptData(writer.fullname),
-      "username" : decryptData(writer.username),
-      "email" : decryptData(writer.email),
-      "phoneNumber" : decryptData(writer.phoneNumber),
-      "dob" : decryptData(writer.dob),
-      "gender" : decryptData(writer.gender),
-      "status":writer.status 
+    const decryptedData = writers.map((writer) => ({
+      _id: writer._id,
+      fullname: decryptData(writer.fullname),
+      username: decryptData(writer.username),
+      email: decryptData(writer.email),
+      phoneNumber: decryptData(writer.phoneNumber),
+      dob: decryptData(writer.dob),
+      gender: decryptData(writer.gender),
+      status: writer.status,
     }));
-    console.log("🚀 ~ file: writer.js:161 ~ findWriters ~ decryptedData:", decryptedData)
+    console.log(
+      "🚀 ~ file: writer.js:161 ~ findWriters ~ decryptedData:",
+      decryptedData
+    );
     res.send({
       status: true,
       message: "List of writers",
@@ -184,35 +191,36 @@ export const findWriters = async (req, res) => {
   }
 };
 
-
-
-
 // Create a new poetry
 const createPoetry = async (req, res) => {
-  try {
-    const writer = await writerModel.findById(mongoose.Types.ObjectId(req.params.writerId));
+  // try {
+  console.log(req, "req");
+  const writer = await writerModel.findById(
+    mongoose.Types.ObjectId(req.params.writerId)
+  );
+  console.log("writer", writer);
 
-    if (!writer) {
-      return res.status(404).json({ error: "writerModel not found" });
-    }
-
-    const poetry = {
-      title: req.body.title,
-      content: req.body.content,
-      author: req.body.author,
-      genre: req.body.genre,
-      tags: req.body.tags,
-      liked : req.body.liked,
-      image: req.file.filename,
-    };
-
-    writer.poetry.push(poetry);
-    await writer.save();
-
-    return res.status(201).json({ message: "Poetry created successfully" });
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
+  if (!writer) {
+    return res.status(404).json({ error: "writerModel not found" });
   }
+
+  const poetry = {
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author,
+    genre: req.body.genre,
+    tags: req.body.tags,
+    liked: req.body.liked,
+    image: req.file.path,
+  };
+
+  writer.poetry.push(poetry);
+  await writer.save();
+
+  return res.status(201).json({ message: "Poetry created successfully" });
+  // } catch (error) {
+  //   return res.status(500).json({ error: error.message });
+  // }
 };
 
 // Retrieve all poetry of a writer
@@ -220,7 +228,7 @@ const createPoetry = async (req, res) => {
 const getAllPoetry = async (req, res) => {
   try {
     const writers = await writerModel.find({}); // Use the find() method to get all writers, and select only the poetry field
-    const poetry = writers.flatMap(writer => writer.poetry); // Extract the poetry field from each writer document and flatten the resulting array
+    const poetry = writers.flatMap((writer) => writer.poetry); // Extract the poetry field from each writer document and flatten the resulting array
 
     if (!poetry || poetry.length === 0) {
       return res.status(404).json({ error: "Poetry not found" });
