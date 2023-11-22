@@ -7,5 +7,6 @@
 .favouritepoetry--page{
     height:100vh;
     width: 100%; 
-    background: linear-gradient(103deg, rgb(235, 225, 188) 7.2%, rgb(232, 188, 234) 57.5%, rgb(203, 209, 244) 90.7%);  
+    /* background: linear-gradient(103deg, rgb(235, 225, 188) 7.2%, rgb(232, 188, 234) 57.5%, rgb(203, 209, 244) 90.7%);   */
+    background-color: black;
 }

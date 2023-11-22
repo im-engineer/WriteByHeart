@@ -7,7 +7,8 @@
 .landing--page{
     height:100vh;   
     width: 100%;
-    background-image: url('../../assets/jpeg/book.jpeg');
+    /* background-image: url('../../assets/jpeg/book.jpeg'); */
+    background-color: black;
     background-repeat: no-repeat;
     background-size: 100% 100%;    
     text-align: center;

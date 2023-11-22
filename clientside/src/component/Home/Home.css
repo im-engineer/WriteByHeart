@@ -9,9 +9,10 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-image: url('../../assets/jpeg/pexels-suzy-hazelwood-2662180.jpg');
+    /* background-image: url('../../assets/jpeg/pexels-suzy-hazelwood-2662180.jpg'); */
     background-repeat: no-repeat;
     background-size: 100% 100%; 
+    background-color: black;
 }
 
 .home--page div{
