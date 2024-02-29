@@ -1,14 +1,14 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.poetry--page{
-    height:50vh;
-    width: 100%; 
-    /* background-image: url('../../assets/jpeg/book-1.jpeg'); */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;    
-    background-attachment: fixed;  
-    background-color: black;
+.poetry--page {
+  height: 50vh;
+  width: 100%;
+  background-image: url("../../assets/jpeg/publish.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-color: black;
 }

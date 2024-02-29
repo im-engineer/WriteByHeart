@@ -1,26 +1,30 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.home--page{
-    width: 100%;
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* background-image: url('../../assets/jpeg/pexels-suzy-hazelwood-2662180.jpg'); */
-    background-repeat: no-repeat;
-    background-size: 100% 100%; 
-    background-color: black;
+.home--page {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-image: url("../../assets/jpeg/pexels-suzy-hazelwood-2662180.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: black;
 }
 
-.home--page div{
-    margin:40px;
-    padding: 70px;
-    color:white;
-    font-size: 25px;
-    background-color: rgba(167, 163, 163, 1);
-    box-shadow: 4px 4px 4px rgb(128, 0, 128);
-    width:20%;
+.home--page div {
+  margin: 40px;
+  padding: 70px;
+  color: white;
+  font-size: 25px;
+  background: linear-gradient(
+    106.7deg,
+    rgb(245, 167, 191) -6.2%,
+    rgb(201, 218, 238) 46.4%,
+    rgb(164, 240, 229) 86.4%
+  ); /* box-shadow: 4px 4px 4px rgb(128, 0, 128); */
+  width: 20%;
 }

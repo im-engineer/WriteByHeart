@@ -7,15 +7,11 @@
 .latestpoetry--page {
   height: 100vh;
   width: 100%;
-  /* background: linear-gradient(
-    106.7deg,
-    rgb(245, 167, 191) -6.2%,
-    rgb(201, 218, 238) 46.4%,
-    rgb(164, 240, 229) 86.4%
-  ); */
-  overflow-y: scroll;
+  background-image: url("../../assets/jpeg/workbench.jpg");
   background-color: black;
-
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow-y: scroll;
 }
 
 .latestpoetry--page::-webkit-scrollbar {
@@ -24,16 +20,15 @@
 
 .latestpoetry--page::-webkit-scrollbar-thumb {
   border-radius: 1px;
-  /* background: linear-gradient(
+  background: linear-gradient(
     106.7deg,
     rgb(245, 167, 191) -6.2%,
     rgb(201, 218, 238) 46.4%,
     rgb(164, 240, 229) 86.4%
-  ); */
+  );
   background-color: black;
 
   padding: 1rem;
-
 }
 
 /* LatestPoetry.css */
@@ -59,9 +54,7 @@
 .card {
   border-radius: 5px;
   padding: 0.5rem;
-  flex-basis: calc(
-    25% - 2rem
-  );
+  flex-basis: calc(25% - 2rem);
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
@@ -83,7 +76,7 @@
 }
 
 @media (max-width: 768px) {
-  .latestpoetry--page{
+  .latestpoetry--page {
     overflow-y: scroll;
     padding: 1rem;
   }
@@ -91,7 +84,6 @@
     flex-basis: 100%;
     margin-bottom: 1rem;
     /* overflow-y: scroll; */
-
   }
 
   .pagination-buttons {
@@ -106,9 +98,7 @@
     background-color: #f7f7f7;
     z-index: 10;
   }
-  
 }
-
 
 .pagination-buttons {
   display: flex;
@@ -122,8 +112,8 @@
     rgb(150, 60, 87) -6.2%,
     rgb(201, 218, 238) 56.4%,
     rgb(12, 87, 76) 86.4%
-  );  
-  color: #FFFFFF; /* Set text color */
+  );
+  color: #ffffff; /* Set text color */
   margin-right: 10px; /* Set right margin */
   border-radius: 50%; /* Set border radius */
   cursor: pointer; /* Set cursor to pointer */
@@ -139,4 +129,3 @@
   opacity: 0.5; /* Set opacity for disabled state */
   cursor: default; /* Set cursor to default for disabled state */
 }
-
